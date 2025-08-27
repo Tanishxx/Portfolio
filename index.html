@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tanishq • Video Editor</title>
+  <meta name="description" content="Freelance video editor portfolio and services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#f5f7ff', 100: '#e6e9ff', 200: '#c8cdff', 300: '#a3aaff',
+              400: '#7b84ff', 500: '#5863ff', 600: '#3f49e6', 700: '#2f38b4',
+              800: '#262e8c', 900: '#1f266e'
+            }
+          },
+          boxShadow: { glow: '0 0 40px rgba(120, 120, 255, 0.25)' },
+          backgroundImage: {
+            grid: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0)',
+            noise: "url('data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.04\"/></svg>')"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* smooth scrolling */
+    html{scroll-behavior:smooth}
+    /* fancy underline */
+    .link-underline { background-image: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4)); background-size: 0 2px; background-position: 0 100%; background-repeat:no-repeat; transition:background-size .3s ease; }
+    .link-underline:hover{ background-size: 100% 2px; }
+  </style>
+</head>
+<body class="bg-gray-950 text-white font-sans antialiased">
+  <!-- Floating gradient blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-brand-600 blur-3xl opacity-30"></div>
+    <div class="absolute top-1/2 -right-24 h-96 w-96 rounded-full bg-fuchsia-600 blur-3xl opacity-20"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-64 w-[36rem] bg-gradient-to-r from-brand-500/30 via-indigo-500/20 to-purple-500/30 blur-3xl rounded-full"></div>
+    <div class="absolute inset-0 bg-grid bg-[size:22px_22px]"></div>
+    <div class="absolute inset-0 bg-noise"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-gray-950/60 border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-bold tracking-tight text-white">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-purple-500 shadow-glow">TE</span>
+        <span>Tanishq Edit</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <a class="hover:text-white link-underline" href="#services">Services</a>
+        <a class="hover:text-white link-underline" href="#work">Work</a>
+        <a class="hover:text-white link-underline" href="#pricing">Pricing</a>
+        <a class="hover:text-white link-underline" href="#about">About</a>
+        <a class="hover:text-white link-underline" href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-4 py-2 border border-white/10 transition shadow-glow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.5a2.25 2.25 0 0 1-2.36 0l-7.5-4.5A2.25 2.25 0 0 1 3 6.993V6.75"/></svg>
+        Get a Quote
+      </a>
+      <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 p-2 border border-white/10" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/5 bg-gray-950/90 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3 text-gray-200">
+        <a href="#services" class="py-2">Services</a>
+        <a href="#work" class="py-2">Work</a>
+        <a href="#pricing" class="py-2">Pricing</a>
+        <a href="#about" class="py-2">About</a>
+        <a href="#contact" class="py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative">
+    <div class="max-w-7xl mx-auto px-4 pt-16 pb-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gray-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Freelance • Video Editing • Motion</p>
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          Crisp, cinematic edits
+          <span class="block bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-indigo-400 to-fuchsia-400">that make people watch.</span>
+        </h1>
+        <p class="mt-5 text-gray-300 max-w-xl">From YouTube to ads, I cut tight stories, grade for mood, and design sound that hooks audiences in seconds.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-fuchsia-600 hover:opacity-95 px-6 py-3 font-semibold shadow-glow">
+            Book a Free Consult
+          </a>
+          <a href="#work" class="inline-flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 px-6 py-3 border border-white/10">See Portfolio</a>
+        </div>
+        <div class="mt-8 flex items-center gap-4 text-sm text-gray-300">
+          <div class="flex -space-x-2">
+            <img class="h-8 w-8 rounded-full ring-2 ring-gray-900" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=96&auto=format&fit=crop" alt="client"/>
+            <img class="h-8 w-8 rounded-full ring-2 ring-gray-900" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=96&auto=format&fit=crop" alt="client"/>
+            <img class="h-8 w-8 rounded-full ring-2 ring-gray-900" src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?q=80&w=96&auto=format&fit=crop" alt="client"/>
+          </div>
+          <span>Trusted by 120+ creators & brands</span>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="relative aspect-[9/16] max-w-sm mx-auto rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-b from-black/60 to-black/30">
+          <video class="h-full w-full object-cover" autoplay muted loop playsinline>
+            <source src="https://cdn.coverr.co/videos/coverr-a-young-editor-working-on-her-macbook-4247/1080p.mp4" type="video/mp4"/>
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs border border-white/10">
+            <span class="inline-block h-2 w-2 rounded-full bg-green-400"></span> 4K export • Color graded
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl sm:text-4xl font-bold">Services</h2>
+        <p class="mt-3 text-gray-300">Pick what you need — or mix & match for a full-production package.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v8.25A2.25 2.25 0 0 0 5.25 16.5h8.25A2.25 2.25 0 0 0 15.75 14.25V12M9.75 12l8.25 5.25V6.75L9.75 12z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">YouTube & Reels</h3>
+          <p class="mt-2 text-gray-300">Snappy edits, captions, memes, SFX, and thumbnail direction for growth.</p>
+        </div>
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25h18M7.5 4.5h9A3 3 0 0 1 19.5 7.5v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">Ads & Promos</h3>
+          <p class="mt-2 text-gray-300">High-converting cuts with clean supers, product shots, and callouts.</p>
+        </div>
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h7.5m-9 3h10.5M3.75 12v6.75a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V12"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">Color & Sound</h3>
+          <p class="mt-2 text-gray-300">Cinematic grades (Log/V-Log/S-Log), sound design, and clean mixes.</p>
+        </div>
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">Motion Graphics</h3>
+          <p class="mt-2 text-gray-300">Logo stings, lower-thirds, captions, and animated explainers.</p>
+        </div>
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75v10.5m6-6H6"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">Event Highlights</h3>
+          <p class="mt-2 text-gray-300">Weddings, conferences, and aftermovies with rhythm & energy.</p>
+        </div>
+        <div class="group rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 flex items-center justify-center mb-4 shadow-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l2.25 2.25L15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold">Retainers</h3>
+          <p class="mt-2 text-gray-300">Monthly content pipelines for creators & brands with SLAs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / PORTFOLIO -->
+  <section id="work" class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold">Featured Work</h2>
+          <p class="mt-3 text-gray-300">Tap a thumbnail to preview. Replace with your own thumbnails and links.</p>
+        </div>
+        <a href="#contact" class="inline-flex rounded-xl bg-white/10 hover:bg-white/20 px-4 py-2 border border-white/10">Request full portfolio</a>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- item -->
+        <button data-video="https://player.vimeo.com/video/76979871" class="thumb group relative overflow-hidden rounded-2xl border border-white/10">
+          <img class="w-full h-56 object-cover group-hover:scale-105 transition" src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1200&auto=format&fit=crop" alt="ad"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 text-sm bg-white/10 backdrop-blur px-2 py-1 rounded border border-white/10">Ad • 30s</span>
+        </button>
+        <button data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" class="thumb group relative overflow-hidden rounded-2xl border border-white/10">
+          <img class="w-full h-56 object-cover group-hover:scale-105 transition" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="yt"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 text-sm bg-white/10 backdrop-blur px-2 py-1 rounded border border-white/10">YouTube • 8m</span>
+        </button>
+        <button data-video="https://player.vimeo.com/video/90652287" class="thumb group relative overflow-hidden rounded-2xl border border-white/10">
+          <img class="w-full h-56 object-cover group-hover:scale-105 transition" src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?q=80&w=1200&auto=format&fit=crop" alt="event"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 text-sm bg-white/10 backdrop-blur px-2 py-1 rounded border border-white/10">Event • 2m</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4">
+      <button id="lbClose" class="absolute top-4 right-4 rounded-full bg-white/10 p-2 border border-white/10" aria-label="Close video">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="w-full max-w-4xl aspect-video">
+        <iframe id="lbFrame" class="h-full w-full rounded-2xl border border-white/10" src="" title="video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl sm:text-4xl font-bold">Simple, transparent pricing</h2>
+        <p class="mt-3 text-gray-300">Project-based or monthly retainer. Custom quotes on request.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- tier -->
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Starter</h3>
+          <p class="mt-2 text-gray-300">Perfect for short social edits.</p>
+          <div class="mt-6 text-4xl font-extrabold">₹4,999<span class="text-base font-medium text-gray-400"> /video</span></div>
+          <ul class="mt-6 space-y-2 text-sm text-gray-200">
+            <li>• Up to 60s</li>
+            <li>• Basic captions</li>
+            <li>• 2 revisions</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex justify-center rounded-xl bg-white/10 hover:bg-white/20 px-4 py-2 border border-white/10">Choose</a>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 p-6 ring-2 ring-brand-500/30 shadow-glow flex flex-col">
+          <div class="inline-flex self-start text-xs uppercase tracking-widest bg-brand-500/20 text-brand-100 px-2 py-1 rounded">Popular</div>
+          <h3 class="mt-2 text-xl font-semibold">Creator</h3>
+          <p class="mt-2 text-gray-300">Weekly content pipeline for growth.</p>
+          <div class="mt-6 text-4xl font-extrabold">₹17,999<span class="text-base font-medium text-gray-400"> /month</span></div>
+          <ul class="mt-6 space-y-2 text-sm text-gray-200">
+            <li>• 8 videos (≤90s)</li>
+            <li>• Advanced captions & memes</li>
+            <li>• Thumbnail direction</li>
+            <li>• Priority turnaround</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex justify-center rounded-xl bg-gradient-to-br from-brand-500 to-fuchsia-600 px-4 py-2 font-semibold shadow-glow">Choose</a>
+        </div>
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Pro Campaign</h3>
+          <p class="mt-2 text-gray-300">For ads, promos, and launches.</p>
+          <div class="mt-6 text-4xl font-extrabold">₹34,999<span class="text-base font-medium text-gray-400"> /project</span></div>
+          <ul class="mt-6 space-y-2 text-sm text-gray-200">
+            <li>• Script & edit (≤60s)</li>
+            <li>• Motion graphics</li>
+            <li>• Pro color & mix</li>
+            <li>• 3 revisions</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex justify-center rounded-xl bg-white/10 hover:bg-white/20 px-4 py-2 border border-white/10">Choose</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="order-2 lg:order-1">
+        <h2 class="text-3xl sm:text-4xl font-bold">About me</h2>
+        <p class="mt-4 text-gray-300">I’m Tanishq, a freelance video editor helping creators and brands tell sharp, scroll-stopping stories. I work in Premiere Pro, After Effects, Resolve, and Fairlight, with workflows for proxies, versioning, and cloud review.</p>
+        <dl class="mt-6 grid sm:grid-cols-2 gap-4 text-sm text-gray-200">
+          <div class="rounded-xl bg-white/5 border border-white/10 p-4"><dt class="font-semibold">Turnaround</dt><dd>48–72 hours (typical)</dd></div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-4"><dt class="font-semibold">Delivery</dt><dd>4K/1080p • .srt captions</dd></div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-4"><dt class="font-semibold">Collab</dt><dd>Frame.io, Drive, Dropbox</dd></div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-4"><dt class="font-semibold">Timezones</dt><dd>IST • PST • GMT</dd></div>
+        </dl>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="relative max-w-lg mx-auto">
+          <img class="rounded-2xl border border-white/10 shadow-2xl" src="https://images.unsplash.com/photo-1522651080-1f8f3e9fc1c5?q=80&w=1200&auto=format&fit=crop" alt="editing desk"/>
+          <div class="absolute -bottom-6 -left-6 bg-white/10 border border-white/10 rounded-2xl p-4 backdrop-blur shadow-glow">
+            <p class="text-sm">Adobe CC • Resolve • RX • Mocha</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (simple carousel) -->
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold">Client love</h2>
+      <div id="carousel" class="mt-8 relative overflow-hidden">
+        <div id="slides" class="whitespace-nowrap transition-transform duration-500">
+          <div class="inline-block align-top w-full px-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <p class="text-lg">“Turned our rough footage into a slick ad that doubled CTR. Super quick and collaborative.”</p>
+              <p class="mt-4 text-sm text-gray-300">— Sarah K, D2C Founder</p>
+            </div>
+          </div>
+          <div class="inline-block align-top w-full px-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <p class="text-lg">“Understands YouTube pacing perfectly. My average view duration jumped by 21%.”</p>
+              <p class="mt-4 text-sm text-gray-300">— Mike L, Creator (450k)</p>
+            </div>
+          </div>
+          <div class="inline-block align-top w-full px-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <p class="text-lg">“Great color work and sound. Our event aftermovie had the exact vibe we wanted.”</p>
+              <p class="mt-4 text-sm text-gray-300">— Aria Events</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center justify-center gap-2">
+          <button data-dot="0" class="dot h-2 w-6 rounded-full bg-white/60"></button>
+          <button data-dot="1" class="dot h-2 w-2 rounded-full bg-white/30"></button>
+          <button data-dot="2" class="dot h-2 w-2 rounded-full bg-white/30"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-bold">Let’s work together</h2>
+        <p class="mt-3 text-gray-300">Share your brief and assets. I’ll reply with a timeline and quote.</p>
+        <div class="mt-8 rounded-2xl bg-white/5 border border-white/10 p-6">
+          <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll get back to you shortly.');">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input required placeholder="Name" class="p-3 rounded-xl bg-black/40 border border-white/10"/>
+              <input required type="email" placeholder="Email" class="p-3 rounded-xl bg-black/40 border border-white/10"/>
+            </div>
+            <input placeholder="Project link (Drive/Frame.io)" class="mt-4 p-3 w-full rounded-xl bg-black/40 border border-white/10"/>
+            <textarea required placeholder="Tell me about your project…" class="mt-4 p-3 w-full h-32 rounded-xl bg-black/40 border border-white/10"></textarea>
+            <button class="mt-4 inline-flex rounded-xl bg-gradient-to-br from-brand-500 to-fuchsia-600 px-6 py-3 font-semibold shadow-glow">Send message</button>
+          </form>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Email</h3>
+          <p class="text-gray-300">tanishqp434@gmail.com</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">WhatsApp</h3>
+          <p class="text-gray-300">+91 930-740-5690</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Social</h3>
+          <div class="mt-2 flex gap-3 text-sm text-gray-300">
+            <a class="hover:text-white" href="#">YouTube</a>
+            <a class="hover:text-white" href="#">Instagram</a>
+            <a class="hover:text-white" href="#">Behance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <p>© <span id="year"></span> Tanishq Pawar. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#home" class="link-underline">Home</a>
+        <a href="#services" class="link-underline">Services</a>
+        <a href="#work" class="link-underline">Work</a>
+        <a href="#contact" class="link-underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // portfolio lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbFrame = document.getElementById('lbFrame');
+    const lbClose = document.getElementById('lbClose');
+    document.querySelectorAll('.thumb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-video');
+        lbFrame.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow='hidden';
+      });
+    });
+    const closeLb = () => { lightbox.classList.add('hidden'); lbFrame.src=''; document.body.style.overflow=''; };
+    lbClose.addEventListener('click', closeLb);
+    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeLb(); });
+
+    // testimonials carousel
+    const slides = document.getElementById('slides');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    let idx = 0;
+    function go(i){ idx = i; slides.style.transform = `translateX(-${i*100}%)`; dots.forEach((d,k)=>{ d.className = 'dot ' + (k===i?'h-2 w-6 bg-white/60':'h-2 w-2 bg-white/30') + ' rounded-full'; }); }
+    dots.forEach(d=> d.addEventListener('click', ()=> go(+d.dataset.dot)));
+    setInterval(()=> go((idx+1)%3), 5000);
+
+    // reveal on scroll
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('opacity-100','translate-y-0'); }
+      })
+    },{threshold: .12});
+    document.querySelectorAll('section').forEach(sec=>{
+      sec.classList.add('opacity-0','translate-y-6','transition','duration-700');
+      obs.observe(sec);
+    });
+  </script>
+</body>
+</html>
